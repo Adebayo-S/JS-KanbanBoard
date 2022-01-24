@@ -21,8 +21,7 @@ add_btn.addEventListener("click", () => {
 const create_item = () => {
   let item = document.createElement("div");
   item.classList.add("item");
-  item.setAttribute("id", "item-");
-  item.innerHTML = "order";
+  item.setAttribute("id", "item-"+ order);
   item.setAttribute("draggable", true);
 
   item.addEventListener("dragstart", (e) => {
@@ -50,7 +49,9 @@ const create_item = () => {
     }
   })
 
-  return item.appendChild(save_btn);
+  item.appendChild(save_btn);
+
+  return item;
 
 };
 
