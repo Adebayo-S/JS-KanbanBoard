@@ -33,6 +33,36 @@ const create_item = () => {
     e.dataTransfer.clearData();
   });
 
+  let input = document.createElement("input");
+  item.appendChild(input);
+
+  let save_btn = document.createElement("button");
+  save_btn.innerHTML = "Save";
+
+  save_btn.addEventListener("click", (e) => {
+    error.innerHTML = "";
+    if (input.value !== ""){
+      order += 1;
+      item.innerHTML = input.value;
+      adding = false;
+    } else {
+      error.innerHTML = message;
+    }
+  })
+
+  return item.appendChild(save_btn);
+
 };
 
-document.querySelectorAll(".drop").forEach((element) => {});
+document.querySelectorAll(".drop").forEach((element) => {
+
+  element.addEventListener('drop', (e)=> {
+    e.preventDefault();
+    const id = e.dataTransfer.getData("text");
+    e.target.appendChild(document.getElementById(id));
+  })
+
+  element.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  })
+});
